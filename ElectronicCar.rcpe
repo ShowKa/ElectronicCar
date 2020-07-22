@@ -26,6 +26,7 @@
       <Category Name="io">
         <Path>led.c</Path>
         <Path>lcd.c</Path>
+        <Path>da.c</Path>
       </Category>
       <Category Name="irq">
         <Path>irq.c</Path>
@@ -114,6 +115,7 @@
           <Path>DefaultBuild\pwm.obj</Path>
           <Path>DefaultBuild\lcd.obj</Path>
           <Path>DefaultBuild\hwsetup.obj</Path>
+          <Path>DefaultBuild\da.obj</Path>
         </LinkOrder>
         <CommonOptions />
       </BuildMode>

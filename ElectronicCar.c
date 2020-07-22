@@ -18,6 +18,7 @@ void setup() {
 	init_DA();
 	init_TPU2();
 	init_CMT2();
+	LCD_init();
 	setpsw_i();
 }
 
@@ -29,11 +30,39 @@ void Excep_CMT1_CMI1(void){
 // CMTäÑçû
 int i = 0;
 void Excep_CMT2_CMI2(void) {
+	static int value;
+	static char value_str[21];
+	float volt = 3.3;
+	value_str[20] = 0x00;
+	// set value
 	if (0 <= i && i < 10) {
-		set_DA0(512);
+		value = 512;
+		
 	} else if (10 <= i && i < 20){
-		set_DA0(1023);
+		value = 1023;
 	}
+	set_DA0(value);
+	// lcd
+	value_str[0] = 'D';
+	value_str[1] = '/';
+	value_str[2] = 'A';
+	value_str[3] = ':';
+	value_str[4] = value / 1000 % 10 + '0';
+	value_str[5] = value / 100 % 10 + '0';
+	value_str[6] = value / 10 % 10 + '0';
+	value_str[7] = value / 1 % 10 + '0';
+	// ìdà≥
+	volt *= (value / 1023.0);
+	value_str[8] = ':';
+	value_str[9] = (int)volt % 10 + '0';
+	value_str[10] = '.';
+	value_str[11] = (int)(volt * 10) % 10 + '0';
+	value_str[12] = 'v';
+	value_str[13] = 0x00;
+	// LCD
+	LCD_clear();
+	LCD_locate(1, 1);
+	LCD_putstr(value_str);
 	if (++i == 20) {
 		i = 0;
 	}

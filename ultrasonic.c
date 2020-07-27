@@ -1,3 +1,5 @@
+// init TPU9, cmt0, irq0 !
+
 #include "iodefine.h"
 #include "vect.h"
 

@@ -17,8 +17,12 @@ void main() {
 void setup() {
 	init_DA();
 	init_TPU2();
+	init_TPU9();
+	init_CMT0();
 	init_CMT2();
 	LCD_init();
+	init_US_TRIGGER();
+	initIRQ();
 	setpsw_i();
 }
 
@@ -32,11 +36,13 @@ int i = 0;
 void Excep_CMT2_CMI2(void) {
 	static int value;
 	static char value_str[21];
-	float volt = 3.3;
+	float volt = 3.3f;
 	value_str[20] = 0x00;
 	// set value
-	if (0 <= i && i < 10) {
-		value = 512;
+	if (DISTANCE < 100) {
+		value = 0;
+	} else if (0 <= i && i < 10) {
+		value = 0;
 		
 	} else if (10 <= i && i < 20){
 		value = 1023;
@@ -63,6 +69,26 @@ void Excep_CMT2_CMI2(void) {
 	LCD_clear();
 	LCD_locate(1, 1);
 	LCD_putstr(value_str);
+	// ‹——£
+	value_str[0] = 'D';
+	value_str[1] = 'i';
+	value_str[2] = 's';
+	value_str[3] = 't';
+	value_str[4] = 'a';
+	value_str[5] = 'n';
+	value_str[6] = 'c';
+	value_str[7] = 'e';
+	value_str[8] = ':';
+	value_str[9] = DISTANCE / 100 % 10 + '0';
+	value_str[10] = DISTANCE / 10 % 10 + '0';
+	value_str[11] = DISTANCE / 1 % 10 + '0';
+	value_str[12] = 'c';
+	value_str[13] = 'm';
+	value_str[14] = 0x00;
+	// LCD
+	LCD_locate(1, 2);
+	LCD_putstr(value_str);
+	// index
 	if (++i == 20) {
 		i = 0;
 	}

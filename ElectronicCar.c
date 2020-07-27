@@ -1,10 +1,12 @@
 #include <machine.h>
 #include "sciDrv.h"
 #include "vect.h"
+#include "iodefine.h"
 
 //ƒOƒ[ƒoƒ‹•Ï”éŒ¾
 extern int DISTANCE;
 extern unsigned short TEMPERATURE;
+extern unsigned short AN000_DATA;
 
 void setup();
 
@@ -16,6 +18,7 @@ void main() {
 // ‰Šú‰»
 void setup() {
 	init_DA();
+	init_S12AD();
 	init_TPU2();
 	init_TPU9();
 	init_CMT0();
@@ -41,11 +44,8 @@ void Excep_CMT2_CMI2(void) {
 	// set value
 	if (DISTANCE < 100) {
 		value = 0;
-	} else if (0 <= i && i < 10) {
-		value = 0;
-		
-	} else if (10 <= i && i < 20){
-		value = 1023;
+	} else {
+		value = 1023 * (AN000_DATA / 4095.0);
 	}
 	set_DA0(value);
 	// lcd
@@ -87,6 +87,15 @@ void Excep_CMT2_CMI2(void) {
 	value_str[14] = 0x00;
 	// LCD
 	LCD_locate(1, 2);
+	LCD_putstr(value_str);
+	// AD AN000
+	value_str[0] = AN000_DATA / 1000 % 10 + '0';
+	value_str[1] = AN000_DATA / 100 % 10 + '0';
+	value_str[2] = AN000_DATA / 10 % 10 + '0';
+	value_str[3] = AN000_DATA / 1 % 10 + '0';
+	value_str[4] = 0x00;
+	// LCD
+	LCD_locate(1, 3);
 	LCD_putstr(value_str);
 	// index
 	if (++i == 20) {

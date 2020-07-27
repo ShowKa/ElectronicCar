@@ -2,7 +2,8 @@
 #include <machine.h>
 #include "vect.h"
 
-unsigned  short TEMPERATURE = 0;
+unsigned short TEMPERATURE = 0;
+unsigned short AN000_DATA = 0;
 
 /*** S12AD S12ADI0 ***/
 void Excep_S12AD_S12ADI0(void) {
@@ -12,6 +13,7 @@ void Excep_S12AD_S12ADI0(void) {
     data_AN002 = S12AD.ADDR2;
     cal_AN002 = (unsigned short) ((( data_AN002 * 3300 / 4096.0 -424) / 6.25 ) * 10 );
     TEMPERATURE = cal_AN002;
+    AN000_DATA = S12AD.ADDR0;
 }
 
 void init_S12AD(void) {

@@ -27,6 +27,7 @@
         <Path>led.c</Path>
         <Path>lcd.c</Path>
         <Path>da.c</Path>
+        <Path>switch.c</Path>
       </Category>
       <Category Name="irq">
         <Path>irq.c</Path>
@@ -116,6 +117,7 @@
           <Path>DefaultBuild\lcd.obj</Path>
           <Path>DefaultBuild\hwsetup.obj</Path>
           <Path>DefaultBuild\da.obj</Path>
+          <Path>DefaultBuild\switch.obj</Path>
         </LinkOrder>
         <CommonOptions />
       </BuildMode>

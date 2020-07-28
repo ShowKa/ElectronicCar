@@ -7,6 +7,7 @@
 extern int DISTANCE;
 extern unsigned short TEMPERATURE;
 extern unsigned short AN001_DATA;
+extern unsigned char ACCELL_SWITCH;
 
 void setup();
 
@@ -42,7 +43,8 @@ void Excep_CMT2_CMI2(void) {
 	float volt = 3.3f;
 	value_str[20] = 0x00;
 	// set value
-	if (DISTANCE < 100) {
+	if (DISTANCE < 100 || ACCELL_SWITCH == 0) {
+		ACCELL_SWITCH = 0;
 		value = 0;
 	} else {
 		value = 1023 * (AN001_DATA / 4095.0);
@@ -88,7 +90,7 @@ void Excep_CMT2_CMI2(void) {
 	// LCD
 	LCD_locate(1, 2);
 	LCD_putstr(value_str);
-	// AD AN000
+	// AD AN001
 	value_str[0] = AN001_DATA / 1000 % 10 + '0';
 	value_str[1] = AN001_DATA / 100 % 10 + '0';
 	value_str[2] = AN001_DATA / 10 % 10 + '0';
@@ -96,6 +98,21 @@ void Excep_CMT2_CMI2(void) {
 	value_str[4] = 0x00;
 	// LCD
 	LCD_locate(1, 3);
+	LCD_putstr(value_str);
+	// ACCELL SWITCH
+	value_str[0] = 'A';
+	value_str[1] = 'C';
+	value_str[2] = 'C';
+	value_str[3] = 'E';
+	value_str[4] = 'L';
+	value_str[5] = 'L';
+	value_str[6] = ':';
+	value_str[7] = 'O';
+	value_str[8] = ACCELL_SWITCH == 1 ? 'n' : 'f';
+	value_str[9] = ACCELL_SWITCH == 1 ? 0x00: 'f';
+	value_str[10] = 0x00;
+	// LCD
+	LCD_locate(1, 4);
 	LCD_putstr(value_str);
 	// index
 	if (++i == 20) {

@@ -164,6 +164,13 @@
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>84384237-0e49-47ba-baee-cdd79169a9a8</ParentItem>
     </Instance>
+    <Instance Guid="081e212e-ce00-4d0d-893c-2b6015b7f92d">
+      <Name>switch.c</Name>
+      <Type>File</Type>
+      <RelativePath>switch.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>84384237-0e49-47ba-baee-cdd79169a9a8</ParentItem>
+    </Instance>
     <Instance Guid="1619e76e-9da4-49d6-a2c1-7197d5bb061d">
       <Name>irq.c</Name>
       <Type>File</Type>
@@ -287,7 +294,9 @@
       <SourceItemType16>CSource</SourceItemType16>
       <SourceItemGuid17>77f9d3e8-4d58-4ad4-8986-f9fb8852c06f</SourceItemGuid17>
       <SourceItemType17>CSource</SourceItemType17>
-      <SourceItemCount>18</SourceItemCount>
+      <SourceItemGuid18>081e212e-ce00-4d0d-893c-2b6015b7f92d</SourceItemGuid18>
+      <SourceItemType18>CSource</SourceItemType18>
+      <SourceItemCount>19</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
     </Instance>
     <Instance Guid="9e208646-ccba-4100-a676-29b1efe6545f">
@@ -1281,6 +1290,10 @@ D_2=R_2
       <ItemAddTime>637310182878502227</ItemAddTime>
       <ItemAddTimeCount>0</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="081e212e-ce00-4d0d-893c-2b6015b7f92d">
+      <ItemAddTime>637315403759804745</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="a7be515f-f007-45ed-9059-4e1500c0f74d">
       <TimeTagModified-SourceItem0--0>-8586062238740656132</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -1354,6 +1367,10 @@ D_2=R_2
       <SourceItem17-IsLockedByUser>False</SourceItem17-IsLockedByUser>
       <SourceItem17-BuildingTarget-0>True</SourceItem17-BuildingTarget-0>
       <SourceItem17-IndividualCompileOption-0>False</SourceItem17-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem18--0>-8586056957094961074</TimeTagModified-SourceItem18--0>
+      <SourceItem18-IsLockedByUser>False</SourceItem18-IsLockedByUser>
+      <SourceItem18-BuildingTarget-0>True</SourceItem18-BuildingTarget-0>
+      <SourceItem18-IndividualCompileOption-0>False</SourceItem18-IndividualCompileOption-0>
     </Instance>
   </Class>
   <Class Guid="44fa27c9-0aa0-4297-bd3b-2c5c5bdb8881">

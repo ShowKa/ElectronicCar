@@ -157,7 +157,7 @@ void Excep_RTC_CUP(void){ }
 // void Excep_ICU_IRQ0(void){ }
 
 // ICU IRQ1
-void Excep_ICU_IRQ1(void){ }
+// void Excep_ICU_IRQ1(void){ }
 
 // ICU IRQ2
 void Excep_ICU_IRQ2(void){ }

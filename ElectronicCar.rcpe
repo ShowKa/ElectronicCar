@@ -41,7 +41,7 @@
         <Path>cmt.c</Path>
       </Category>
       <Category Name="sensor">
-        <Path>AD_AN.c</Path>
+        <Path>S12AD.c</Path>
         <Path>ultrasonic.c</Path>
       </Category>
     </Files>
@@ -110,7 +110,7 @@
           <Path>DefaultBuild\Counter_TPU9.obj</Path>
           <Path>DefaultBuild\sciDrv_ch0.obj</Path>
           <Path>DefaultBuild\cmt.obj</Path>
-          <Path>DefaultBuild\AD_AN.obj</Path>
+          <Path>DefaultBuild\S12AD.obj</Path>
           <Path>DefaultBuild\ultrasonic.obj</Path>
           <Path>DefaultBuild\pwm.obj</Path>
           <Path>DefaultBuild\lcd.obj</Path>

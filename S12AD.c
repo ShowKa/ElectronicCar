@@ -4,6 +4,7 @@
 
 unsigned short TEMPERATURE = 0;
 unsigned short AN000_DATA = 0;
+unsigned short AN001_DATA = 0;
 
 /*** S12AD S12ADI0 ***/
 void Excep_S12AD_S12ADI0(void) {
@@ -14,6 +15,7 @@ void Excep_S12AD_S12ADI0(void) {
     cal_AN002 = (unsigned short) ((( data_AN002 * 3300 / 4096.0 -424) / 6.25 ) * 10 );
     TEMPERATURE = cal_AN002;
     AN000_DATA = S12AD.ADDR0;
+    AN001_DATA = S12AD.ADDR1;
 }
 
 void init_S12AD(void) {
@@ -21,16 +23,17 @@ void init_S12AD(void) {
     SYSTEM.PRCR.WORD = 0xA502;
     SYSTEM.MSTPCRA.BIT.MSTPA17 = 0;
     SYSTEM.PRCR.WORD = 0xA500;
-    /* P40&42 set Input pin */
+    /* P40-42 set Input pin */
     PORT4.PDR.BIT.B0 = 0;
+    PORT4.PDR.BIT.B1 = 0;
     PORT4.PDR.BIT.B2 = 0;
     
     /* Setting PMR General I/O */
     PORT4.PMR.BIT.B0 = 0;
+    PORT4.PMR.BIT.B1 = 0;
     PORT4.PMR.BIT.B2 = 0;
     
     /***** ADC Setting ******/
-
     /* Contorol Setting */
     S12AD.ADCSR.BIT.ADST = 0;  // Stop ADC
     S12AD.ADCSR.BYTE = 0x1C; 
@@ -38,7 +41,8 @@ void init_S12AD(void) {
     // Clock PCLK/1, trigger off, sync trigger
     
     /* channel select */
-    S12AD.ADANS0.WORD = 0x05;  // ch0 convert AN000 & 002
+    // ch0 convert AN000,001,002
+    S12AD.ADANS0.WORD = 0x07;
     
     /* AD Data Format setting */
     S12AD.ADCER.BIT.ADRFMT = 0;    // Right-justfy 
@@ -47,7 +51,9 @@ void init_S12AD(void) {
     MPC.PWPR.BYTE &= ~0x80;    // プロテクト解除
     MPC.PWPR.BYTE |= 0x40;
     
-    MPC.P40PFS.BYTE = 0x80;    // アナログ端子に設定(ASELビットを１)
+    // アナログ端子に設定(ASELビットを１)
+    MPC.P40PFS.BYTE = 0x80;
+    MPC.P41PFS.BYTE = 0x80;
     MPC.P42PFS.BYTE = 0x80;
     
     MPC.PWPR.BYTE &= ~0x40;    // プロテクト設定

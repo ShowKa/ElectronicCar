@@ -44,6 +44,7 @@
       <Category Name="sensor">
         <Path>S12AD.c</Path>
         <Path>ultrasonic.c</Path>
+        <Path>GPS.c</Path>
       </Category>
     </Files>
     <DebugOptions>
@@ -118,6 +119,7 @@
           <Path>DefaultBuild\hwsetup.obj</Path>
           <Path>DefaultBuild\da.obj</Path>
           <Path>DefaultBuild\switch.obj</Path>
+          <Path>DefaultBuild\GPS.obj</Path>
         </LinkOrder>
         <CommonOptions />
       </BuildMode>

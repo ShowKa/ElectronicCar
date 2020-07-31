@@ -120,8 +120,4 @@ void initSCI0(void)
 	IPR( SCI0, RXI0) = 10;	// Priory Level 10
 	IR( SCI0, RXI0) = 0;	// clear status flag
 	IEN( SCI0, RXI0) = 1;	// Enable Interrupt
-	
-	/* SCI0 TXD Interrupt */
-
-	/* SCI0 TXE Interrupt */
 }

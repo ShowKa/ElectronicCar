@@ -34,6 +34,7 @@
       </Category>
       <Category Name="sci">
         <Path>sciDrv_ch0.c</Path>
+        <Path>sciDrv_ch2.c</Path>
       </Category>
       <Category Name="motor">
         <Path>pwm.c</Path>
@@ -45,6 +46,12 @@
         <Path>S12AD.c</Path>
         <Path>ultrasonic.c</Path>
         <Path>GPS.c</Path>
+      </Category>
+      <Category Name="talk">
+        <Path>PC.c</Path>
+        <Path>PMOD.c</Path>
+        <Path>RESET.c</Path>
+        <Path>UART_command.c</Path>
       </Category>
     </Files>
     <DebugOptions>
@@ -120,6 +127,11 @@
           <Path>DefaultBuild\da.obj</Path>
           <Path>DefaultBuild\switch.obj</Path>
           <Path>DefaultBuild\GPS.obj</Path>
+          <Path>DefaultBuild\sciDrv_ch2.obj</Path>
+          <Path>DefaultBuild\PC.obj</Path>
+          <Path>DefaultBuild\PMOD.obj</Path>
+          <Path>DefaultBuild\RESET.obj</Path>
+          <Path>DefaultBuild\UART_command.obj</Path>
         </LinkOrder>
         <CommonOptions />
       </BuildMode>

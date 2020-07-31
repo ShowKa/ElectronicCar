@@ -21,6 +21,7 @@ void main() {
 // èâä˙âª
 void setup() {
 	initSCI0();
+	initSCI2();
 	init_DA();
 	init_S12AD();
 	init_GPS();
@@ -32,6 +33,10 @@ void setup() {
 	LCD_init();
 	init_US_TRIGGER();
 	initIRQ();
+	// AquesTALK pico init
+	init_PMOD();
+	init_PC();
+	init_RESET();
 	setpsw_i();
 }
 
@@ -47,8 +52,9 @@ void Excep_CMT2_CMI2(void) {
 	static int value;
 	static char value_str[21];
 	float volt = 3.3f;
+	char emergency =  (DISTANCE < 100) && (ACCELL_SWITCH == 1);
 	value_str[20] = 0x00;
-	// set value
+	// set mortor
 	if (DISTANCE < 100 || ACCELL_SWITCH == 0) {
 		ACCELL_SWITCH = 0;
 		value = 0;
@@ -56,6 +62,10 @@ void Excep_CMT2_CMI2(void) {
 		value = 1023 * (AN001_DATA / 4095.0);
 	}
 	set_DA0(value);
+	// alert
+	if (emergency) {
+		speech("ki'nkyuute'isi", 14);
+	}
 	// lcd
 	value_str[0] = 'D';
 	value_str[1] = '/';
